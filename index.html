@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Pacifico&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Pacifico&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <style>
@@ -25,10 +25,14 @@
     }
 
     body {
-      font-family: "Quicksand", sans-serif;
+      font-family: "Quicksand", "Noto Sans SC", sans-serif;
       color: #3a3a5c;
       background: #fefefe;
       line-height: 1.7;
+    }
+
+    body.zh {
+      font-family: "Noto Sans SC", "Quicksand", sans-serif;
     }
 
     img {
@@ -66,6 +70,12 @@
       background-clip: text;
     }
 
+    .navbar .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
     .navbar nav a {
       margin-left: 2rem;
       font-weight: 600;
@@ -76,6 +86,25 @@
 
     .navbar nav a:hover {
       color: #a78bfa;
+    }
+
+    .lang-toggle {
+      margin-left: 2rem;
+      padding: 0.35rem 0.9rem;
+      border: 2px solid #a78bfa;
+      border-radius: 20px;
+      background: transparent;
+      color: #a78bfa;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: "Noto Sans SC", "Quicksand", sans-serif;
+    }
+
+    .lang-toggle:hover {
+      background: #a78bfa;
+      color: #fff;
     }
 
     /* ===== Hero ===== */
@@ -136,6 +165,11 @@
       margin-bottom: 0.5rem;
       position: relative;
       z-index: 1;
+    }
+
+    body.zh .hero h1 {
+      font-family: "Noto Sans SC", sans-serif;
+      font-weight: 700;
     }
 
     .hero .tagline {
@@ -375,6 +409,11 @@
       margin-bottom: 0.5rem;
     }
 
+    body.zh footer h2 {
+      font-family: "Noto Sans SC", sans-serif;
+      font-weight: 700;
+    }
+
     footer p {
       font-size: 0.95rem;
       opacity: 0.85;
@@ -418,6 +457,10 @@
         font-size: 0.85rem;
       }
 
+      .lang-toggle {
+        margin-left: 1rem;
+      }
+
       .hero h1 {
         font-size: 2.2rem;
       }
@@ -447,6 +490,12 @@
       .interests-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .lang-toggle {
+        margin-left: 0.8rem;
+        padding: 0.25rem 0.6rem;
+        font-size: 0.8rem;
+      }
     }
 
     /* ===== Scroll Animations ===== */
@@ -466,37 +515,42 @@
   <!-- Navbar -->
   <header class="navbar">
     <a href="#" class="logo">Julia Wu</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#interests">Interests</a>
-      <a href="#fun-facts">Fun Facts</a>
-      <a href="#goals">Goals</a>
-    </nav>
+    <div class="nav-right">
+      <nav>
+        <a href="#about" data-en="About" data-zh="关于我">About</a>
+        <a href="#interests" data-en="Interests" data-zh="兴趣爱好">Interests</a>
+        <a href="#fun-facts" data-en="Fun Facts" data-zh="趣事">Fun Facts</a>
+        <a href="#goals" data-en="Goals" data-zh="目标">Goals</a>
+      </nav>
+      <button class="lang-toggle" onclick="toggleLang()">中文</button>
+    </div>
   </header>
 
   <!-- Hero -->
   <section class="hero" id="home">
     <img class="hero-avatar" src="profile.jpg" alt="Julia Wu" />
-    <h1>Hi, I'm Julia Wu!</h1>
-    <p class="tagline">Pianist &bull; Cat Lover &bull; Ice Skater</p>
+    <h1 data-en="Hi, I'm Julia Wu!" data-zh="嗨，我是 Julia Wu！">Hi, I'm Julia Wu!</h1>
+    <p class="tagline" data-en="Pianist &bull; Cat Lover &bull; Ice Skater" data-zh="钢琴手 &bull; 猫咪爱好者 &bull; 滑冰达人">Pianist &bull; Cat Lover &bull; Ice Skater</p>
     <div class="scroll-hint" aria-hidden="true">&darr;</div>
   </section>
 
   <!-- About -->
   <section class="about" id="about">
     <div class="container">
-      <h2 class="section-title fade-in">About Me</h2>
-      <p class="section-subtitle fade-in">A little bit about who I am</p>
+      <h2 class="section-title fade-in" data-en="About Me" data-zh="关于我">About Me</h2>
+      <p class="section-subtitle fade-in" data-en="A little bit about who I am" data-zh="让你更了解我">A little bit about who I am</p>
 
       <div class="about-content">
         <div class="about-text fade-in">
-          <p>
+          <p data-en="Hey there! I'm &lt;strong&gt;Julia Wu&lt;/strong&gt;, a middle school student at &lt;strong&gt;William Diamond Middle School&lt;/strong&gt;. When I'm not at school, you can usually find me at the piano, out on the ice rink, or cuddling with a cat."
+             data-zh="嗨！我是&lt;strong&gt;Julia Wu&lt;/strong&gt;，是&lt;strong&gt;William Diamond 中学&lt;/strong&gt;的一名学生。不在学校的时候，你通常会发现我在弹钢琴、在溜冰场上滑冰，或者在撸猫。">
             Hey there! I'm <strong>Julia Wu</strong>, a middle school student at
             <strong>William Diamond Middle School</strong>. When I'm not at
             school, you can usually find me at the piano, out on the ice rink,
             or cuddling with a cat.
           </p>
-          <p>
+          <p data-en="I love staying active — whether it's ice skating, skiing down snowy slopes, biking around the neighborhood, or swimming laps. I'm also a huge fan of &lt;strong&gt;Peppa Pig&lt;/strong&gt; and &lt;strong&gt;Frozen&lt;/strong&gt; (yes, I still know every word to &quot;Let It Go&quot;!). Life is better when you stay curious and have fun!"
+             data-zh="我喜欢运动——无论是滑冰、在雪坡上滑雪、在小区里骑自行车，还是游泳。我还是&lt;strong&gt;小猪佩奇&lt;/strong&gt;和&lt;strong&gt;冰雪奇缘&lt;/strong&gt;的超级粉丝（没错，我还能唱出《Let It Go》的每一个字！）。保持好奇心，开心生活，才是最棒的！">
             I love staying active — whether it's ice skating, skiing down
             snowy slopes, biking around the neighborhood, or swimming laps.
             I'm also a huge fan of <strong>Peppa Pig</strong> and
@@ -506,8 +560,8 @@
         </div>
         <div class="about-card fade-in">
           <div class="emoji-big">&#127890;</div>
-          <h3>William Diamond Middle School</h3>
-          <p>Proud student working hard and having fun along the way!</p>
+          <h3 data-en="William Diamond Middle School" data-zh="William Diamond 中学">William Diamond Middle School</h3>
+          <p data-en="Proud student working hard and having fun along the way!" data-zh="努力学习，快乐成长的骄傲学生！">Proud student working hard and having fun along the way!</p>
         </div>
       </div>
     </div>
@@ -516,49 +570,49 @@
   <!-- Interests -->
   <section class="interests" id="interests">
     <div class="container">
-      <h2 class="section-title fade-in">My Interests</h2>
-      <p class="section-subtitle fade-in">Things that make me, me!</p>
+      <h2 class="section-title fade-in" data-en="My Interests" data-zh="我的兴趣爱好">My Interests</h2>
+      <p class="section-subtitle fade-in" data-en="Things that make me, me!" data-zh="这些就是我！">Things that make me, me!</p>
 
       <div class="interests-grid">
         <div class="interest-card fade-in">
           <div class="icon">&#127929;</div>
-          <h3>Piano</h3>
-          <p>Playing beautiful melodies and learning new pieces</p>
+          <h3 data-en="Piano" data-zh="钢琴">Piano</h3>
+          <p data-en="Playing beautiful melodies and learning new pieces" data-zh="弹奏优美的旋律，学习新的曲子">Playing beautiful melodies and learning new pieces</p>
         </div>
         <div class="interest-card fade-in">
           <div class="icon">&#9968;</div>
-          <h3>Ice Skating</h3>
-          <p>Gliding on ice and practicing my favorite moves</p>
+          <h3 data-en="Ice Skating" data-zh="滑冰">Ice Skating</h3>
+          <p data-en="Gliding on ice and practicing my favorite moves" data-zh="在冰面上滑行，练习我最喜欢的动作">Gliding on ice and practicing my favorite moves</p>
         </div>
         <div class="interest-card fade-in">
           <div class="icon">&#9975;&#65039;</div>
-          <h3>Skiing</h3>
-          <p>Racing down snowy slopes in the winter</p>
+          <h3 data-en="Skiing" data-zh="滑雪">Skiing</h3>
+          <p data-en="Racing down snowy slopes in the winter" data-zh="冬天在雪坡上飞驰而下">Racing down snowy slopes in the winter</p>
         </div>
         <div class="interest-card fade-in">
           <div class="icon">&#128692;</div>
-          <h3>Biking</h3>
-          <p>Exploring trails and riding around the neighborhood</p>
+          <h3 data-en="Biking" data-zh="骑自行车">Biking</h3>
+          <p data-en="Exploring trails and riding around the neighborhood" data-zh="探索小路，在小区里骑车兜风">Exploring trails and riding around the neighborhood</p>
         </div>
         <div class="interest-card fade-in">
           <div class="icon">&#127946;</div>
-          <h3>Swimming</h3>
-          <p>Splashing around and swimming laps at the pool</p>
+          <h3 data-en="Swimming" data-zh="游泳">Swimming</h3>
+          <p data-en="Splashing around and swimming laps at the pool" data-zh="在泳池里畅游，享受水中的快乐">Splashing around and swimming laps at the pool</p>
         </div>
         <div class="interest-card fade-in">
           <div class="icon">&#128008;</div>
-          <h3>Cats</h3>
-          <p>Total cat person — they're the cutest animals ever!</p>
+          <h3 data-en="Cats" data-zh="猫咪">Cats</h3>
+          <p data-en="Total cat person — they're the cutest animals ever!" data-zh="超级猫奴——猫咪是世界上最可爱的动物！">Total cat person — they're the cutest animals ever!</p>
         </div>
         <div class="interest-card fade-in">
           <div class="icon">&#128055;</div>
-          <h3>Peppa Pig</h3>
-          <p>A classic! Still love watching Peppa's adventures</p>
+          <h3 data-en="Peppa Pig" data-zh="小猪佩奇">Peppa Pig</h3>
+          <p data-en="A classic! Still love watching Peppa's adventures" data-zh="经典！还是很喜欢看佩奇的冒险故事">A classic! Still love watching Peppa's adventures</p>
         </div>
         <div class="interest-card fade-in">
           <div class="icon">&#10052;&#65039;</div>
-          <h3>Frozen</h3>
-          <p>Elsa, Anna, and Olaf — the best movie ever made!</p>
+          <h3 data-en="Frozen" data-zh="冰雪奇缘">Frozen</h3>
+          <p data-en="Elsa, Anna, and Olaf — the best movie ever made!" data-zh="艾莎、安娜和雪宝——史上最棒的电影！">Elsa, Anna, and Olaf — the best movie ever made!</p>
         </div>
       </div>
     </div>
@@ -567,33 +621,33 @@
   <!-- Fun Facts -->
   <section class="fun-facts" id="fun-facts">
     <div class="container">
-      <h2 class="section-title fade-in">Fun Facts</h2>
-      <p class="section-subtitle fade-in">Some things you might not know about me</p>
+      <h2 class="section-title fade-in" data-en="Fun Facts" data-zh="趣事分享">Fun Facts</h2>
+      <p class="section-subtitle fade-in" data-en="Some things you might not know about me" data-zh="一些你可能不知道的事情">Some things you might not know about me</p>
 
       <div class="facts-list">
         <div class="fact-item fade-in">
           <span class="fact-emoji">&#128008;</span>
-          <p>I could spend all day watching cat videos — and I'm not even a little sorry about it!</p>
+          <p data-en="I could spend all day watching cat videos — and I'm not even a little sorry about it!" data-zh="我可以看一整天的猫咪视频——而且我一点都不后悔！">I could spend all day watching cat videos — and I'm not even a little sorry about it!</p>
         </div>
         <div class="fact-item fade-in">
           <span class="fact-emoji">&#10052;&#65039;</span>
-          <p>I know every single word to "Let It Go" and I'm not afraid to sing it anywhere.</p>
+          <p data-en='I know every single word to "Let It Go" and I&apos;m not afraid to sing it anywhere.' data-zh="我能唱出《Let It Go》的每一个字，而且我不怕在任何地方唱出来。">I know every single word to "Let It Go" and I'm not afraid to sing it anywhere.</p>
         </div>
         <div class="fact-item fade-in">
           <span class="fact-emoji">&#127929;</span>
-          <p>I've been playing piano for years and love learning new songs to perform for my family.</p>
+          <p data-en="I've been playing piano for years and love learning new songs to perform for my family." data-zh="我弹钢琴已经好几年了，喜欢学新曲子弹给家人听。">I've been playing piano for years and love learning new songs to perform for my family.</p>
         </div>
         <div class="fact-item fade-in">
           <span class="fact-emoji">&#128055;</span>
-          <p>Peppa Pig is my comfort show — Daddy Pig's jokes never get old!</p>
+          <p data-en="Peppa Pig is my comfort show — Daddy Pig's jokes never get old!" data-zh="小猪佩奇是我的治愈神剧——猪爸爸的笑话永远不会过时！">Peppa Pig is my comfort show — Daddy Pig's jokes never get old!</p>
         </div>
         <div class="fact-item fade-in">
           <span class="fact-emoji">&#9968;</span>
-          <p>Ice skating on a cold winter day is one of my absolute favorite things to do.</p>
+          <p data-en="Ice skating on a cold winter day is one of my absolute favorite things to do." data-zh="寒冷的冬天去滑冰，是我最喜欢做的事情之一。">Ice skating on a cold winter day is one of my absolute favorite things to do.</p>
         </div>
         <div class="fact-item fade-in">
           <span class="fact-emoji">&#127754;</span>
-          <p>In the summer, I'm basically part fish — you'll always find me at the pool!</p>
+          <p data-en="In the summer, I'm basically part fish — you'll always find me at the pool!" data-zh="到了夏天，我简直变成了一条鱼——你总能在泳池里找到我！">In the summer, I'm basically part fish — you'll always find me at the pool!</p>
         </div>
       </div>
     </div>
@@ -602,36 +656,36 @@
   <!-- Goals -->
   <section class="goals" id="goals">
     <div class="container">
-      <h2 class="section-title fade-in">My Goals</h2>
-      <p class="section-subtitle fade-in">What I'm working toward</p>
+      <h2 class="section-title fade-in" data-en="My Goals" data-zh="我的目标">My Goals</h2>
+      <p class="section-subtitle fade-in" data-en="What I'm working toward" data-zh="我正在努力的方向">What I'm working toward</p>
 
       <div class="goals-timeline">
         <div class="goal-item fade-in">
           <div class="goal-dot">&#128161;</div>
           <div class="goal-content">
-            <h3>Excel in School</h3>
-            <p>Keep learning, stay curious, and do my best in every subject.</p>
+            <h3 data-en="Excel in School" data-zh="学业优秀">Excel in School</h3>
+            <p data-en="Keep learning, stay curious, and do my best in every subject." data-zh="持续学习，保持好奇心，每一门课都做到最好。">Keep learning, stay curious, and do my best in every subject.</p>
           </div>
         </div>
         <div class="goal-item fade-in">
           <div class="goal-dot">&#128421;</div>
           <div class="goal-content">
-            <h3>Learn to Code</h3>
-            <p>Build cool projects and maybe even create my own app one day!</p>
+            <h3 data-en="Learn to Code" data-zh="学习编程">Learn to Code</h3>
+            <p data-en="Build cool projects and maybe even create my own app one day!" data-zh="做出很酷的项目，也许有一天还能开发自己的应用！">Build cool projects and maybe even create my own app one day!</p>
           </div>
         </div>
         <div class="goal-item fade-in">
           <div class="goal-dot">&#127757;</div>
           <div class="goal-content">
-            <h3>Make a Difference</h3>
-            <p>Volunteer in my community and help make the world a better place.</p>
+            <h3 data-en="Make a Difference" data-zh="做出改变">Make a Difference</h3>
+            <p data-en="Volunteer in my community and help make the world a better place." data-zh="在社区做志愿者，帮助让世界变得更美好。">Volunteer in my community and help make the world a better place.</p>
           </div>
         </div>
         <div class="goal-item fade-in">
           <div class="goal-dot">&#127891;</div>
           <div class="goal-content">
-            <h3>Dream Big</h3>
-            <p>Work toward getting into a great high school and eventually college!</p>
+            <h3 data-en="Dream Big" data-zh="追逐梦想">Dream Big</h3>
+            <p data-en="Work toward getting into a great high school and eventually college!" data-zh="努力考上好的高中，将来再考上理想的大学！">Work toward getting into a great high school and eventually college!</p>
           </div>
         </div>
       </div>
@@ -640,18 +694,36 @@
 
   <!-- Footer -->
   <footer>
-    <h2>Thanks for visiting!</h2>
+    <h2 data-en="Thanks for visiting!" data-zh="感谢来访！">Thanks for visiting!</h2>
     <div class="visitor-map">
       <a href='https://clustrmaps.com/site/1c98h' title='Visit tracker'><img src='https://clustrmaps.com/map_v2.png?cl=ffffff&w=300&t=n&d=37RGXRTkqlWdIy0sDVQrjbY3fYqoGII0P0uCwYl6m08' alt="Visitor Map" /></a>
     </div>
     <p>&copy; 2026 Julia Wu &bull; Made with &#10084;&#65039;</p>
     <div class="footer-links">
-      <a href="#home">Back to Top</a>
+      <a href="#home" data-en="Back to Top" data-zh="回到顶部">Back to Top</a>
     </div>
   </footer>
 
-  <!-- Scroll Animation Script -->
+  <!-- Language Toggle & Scroll Animation Script -->
   <script>
+    let currentLang = "en";
+
+    function toggleLang() {
+      currentLang = currentLang === "en" ? "zh" : "en";
+      document.documentElement.lang = currentLang;
+      document.body.classList.toggle("zh", currentLang === "zh");
+
+      // Update toggle button text
+      document.querySelector(".lang-toggle").textContent =
+        currentLang === "en" ? "中文" : "English";
+
+      // Update all elements with data-en / data-zh attributes
+      document.querySelectorAll("[data-en][data-zh]").forEach((el) => {
+        el.innerHTML = el.getAttribute("data-" + currentLang);
+      });
+    }
+
+    // Scroll animations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
